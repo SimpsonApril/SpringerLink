@@ -11,10 +11,10 @@ class LoginPage(BasePage):
         self.driver = driver
 
     # Locators
-    _login_link = "Login"
-    _email_field = "user_email"
-    _password_field = "user_password"
-    _login_button = "commit"
+    _login_link = "» Sign up / Log in"
+    _email_field = "login-box-email"
+    _password_field = "login-box-pw"
+    _login_button = "Log in"
 
     def clickLoginLink(self):
         self.elementClick(self._login_link, locatorType="link")
@@ -26,7 +26,7 @@ class LoginPage(BasePage):
         self.sendKeys(password, self._password_field)
 
     def clickLoginButton(self):
-        self.elementClick(self._login_button, locatorType="name")
+        self.elementClick(self._login_button, locatorType="title")
 
     def login(self, email="", password=""):
         self.clickLoginLink()
@@ -35,14 +35,14 @@ class LoginPage(BasePage):
         self.clickLoginButton()
 
     def verifyLoginSuccessful(self):
-        result = self.isElementPresent("//*[@id='navbar']//span[text()='User Settings']",
-                                       locatorType="xpath")
+        result = self.isElementPresent("user")
         return result
 
     def verifyLoginFailed(self):
-        result = self.isElementPresent("//div[contains(text(),'Invalid email or password')]",
+        result = self.isElementPresent("//div[contains(text(),'Unfortunately the details you "
+                                       "supplied do not match our records. Please check and try again')]",
                                        locatorType="xpath")
         return result
 
     def verifyLoginTitle(self):
-        return self.verifyPageTitle("Google")
+        return self.verifyPageTitle("Home - Springer")

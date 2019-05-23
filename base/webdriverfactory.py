@@ -38,7 +38,7 @@ class WebDriverFactory():
         Returns:
             'WebDriver Instance'
         """
-        baseURL = "https://letskodeit.teachable.com/"
+        baseURL = "https://link.springer.com/"
         if self.browser == "iexplorer":
             # Set ie driver
             driver = webdriver.Ie()
