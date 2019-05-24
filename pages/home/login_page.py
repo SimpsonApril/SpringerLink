@@ -20,13 +20,15 @@ class LoginPage(BasePage):
         self.elementClick(self._login_link, locatorType="link")
 
     def enterEmail(self, email):
+        self.getElement(self._email_field).clear()
         self.sendKeys(email, self._email_field)
 
     def enterPassword(self, password):
+        self.getElement(self._password_field).clear()
         self.sendKeys(password, self._password_field)
 
     def clickLoginButton(self):
-        self.elementClick(self._login_button, locatorType="title")
+        self.elementClick("//button[@title='Log in']", locatorType="xpath")
 
     def login(self, email="", password=""):
         self.clickLoginLink()
